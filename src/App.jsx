@@ -10,6 +10,8 @@ const App = () => {
   const [quoteData, setQuoteData] = useState([]);
   const [dataIndex, setDataIndex] = useState(0);
   const [dataLength, setDataLength] = useState(0);
+
+  const getRandomIndex = (length) => Math.floor(Math.random() * length);
   
   useEffect(() => {
     // Fetch data from API on initial component mount only
@@ -19,33 +21,18 @@ const App = () => {
       console.log('App data', data);
       setQuoteData(data);
       setDataLength(data.length);
-      setDataIndex(Math.floor(Math.random() * dataLength));
+      setDataIndex(getRandomIndex(dataLength));
     }
 
     fetchData()
-    // .then(
-    //   window.twttr.widgets.createShareButton(
-    //     "https://dev.twitter.com/web/tweet-button",
-    //     document.getElementById("tweet-quote"),
-    //     {
-    //       size: "large",
-    //       text: `theQuote`,
-    //       hashtags: "freeCodeCamp,randomeQuoteMachine",
-    //     }
-    //   )
-    // )
     .catch(console.error);
 
-
-  }, [dataLength]);
-
-  // const handleTweetClick = () => {
-  //   console.log('Tweet button clicked');
-  // };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleNewQuoteClick = () => {
     // Updating dataIndex will trigger a re-render of QuoteBox
-    setDataIndex(Math.floor(Math.random() * dataLength));
+    setDataIndex(getRandomIndex(dataLength));
   };
 
   return (
@@ -55,7 +42,7 @@ const App = () => {
       <QuoteBox data={quoteData[dataIndex]}/>
       <div className="buttonCol">
         <Button id="new-quote" onClick={handleNewQuoteClick} text="New Quote"/>
-        <TweetButton data={quoteData[dataIndex]}/>
+        {/* <TweetButton data={quoteData[dataIndex]}/> */}
       </div>
     </div>
     }
