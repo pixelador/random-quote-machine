@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react'
 import QuoteBox from './components/QuoteBox';
-import Button from './components/Button';
 import './App.css'
-import TweetButton from './components/TweetButton';
 
 const URL = "https://type.fit/api/quotes"
 
@@ -11,16 +9,10 @@ const App = () => {
   const [quoteData, setQuoteData] = useState([]);
   const [dataIndex, setDataIndex] = useState(0);
   const [dataLength, setDataLength] = useState(0);
+  const [loaded, setLoaded] = useState(false);
   
   const getRandomIndex = (length) => Math.floor(Math.random() * length);
   
-  const initializeState = (data) => {
-    setQuoteData(data);
-    setDataLength(data.length);
-    setDataIndex(getRandomIndex(dataLength));
-    console.log('initializeState dataIndex', dataIndex);
-  };
-
   const handleNewQuoteClick = () => {
     // Updating dataIndex will trigger a re-render of QuoteBox
     setDataIndex(getRandomIndex(dataLength));
@@ -28,29 +20,34 @@ const App = () => {
   };
 
   useEffect(() => {
+    setDataIndex(getRandomIndex(dataLength));
+  }, [dataLength]);
+
+  useEffect(() => {
     // Fetch data from API on initial component mount only
     const fetchData = async () => {
-      const output = await fetch(URL);
-      const data = await output.json();
-      console.log('App data', data);
-      initializeState(data);
+      try {
+        const response = await fetch(URL);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const data = await response.json();
+        setQuoteData(data);
+        setDataLength(data.length);
+        setLoaded(true);
+        console.log('fetchData data', data);
+      }
+      catch(err) {
+        console.error(err);
+      }
     }
 
-    fetchData()
-    .catch(console.error);
-
+    fetchData();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <>
-    <div id="quote-box">
-      <QuoteBox data={quoteData[dataIndex]}/>
-      <div className="buttonCol">
-        <Button id="new-quote" onClick={handleNewQuoteClick} text="New Quote"/>
-        <TweetButton id="tweet-quote" data={quoteData[dataIndex]}/>
-      </div>
-    </div>
+    {console.log('app state: index, lenght, loaded ', dataIndex, dataLength, loaded)}
+    {(loaded && (dataLength > 0)) && <QuoteBox data={quoteData[dataIndex]} callback={handleNewQuoteClick}/>}
     </>
   );
 };
