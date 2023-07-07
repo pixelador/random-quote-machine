@@ -12,11 +12,12 @@ const QuoteBox = ({data, callback}) => {
           &quot;{data?.text}&quot;
         </h1>
         <h4 id="author">&mdash;&nbsp;{data?.author}</h4>
+        <div className="buttonRow">
+          <TweetButton data={data}/>
+          <Button id="new-quote" onClick={callback} text="New Quote"/>
       </div>
-      <div className="buttonRow">
-        <TweetButton data={data}/>
-        <Button id="new-quote" onClick={callback} text="New Quote"/>
       </div>
+
     </>
   )
 };
