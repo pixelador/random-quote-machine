@@ -13,10 +13,22 @@
 .buttonRow {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
 }
 
 .buttonCol {
   display: flex;
   flex-direction: column;
+}
+
+.twitter-share-button {
+  width: 24px;
+  height: auto;
+  padding: 5px;
+  background: lightblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
