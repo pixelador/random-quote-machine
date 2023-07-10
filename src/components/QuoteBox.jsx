@@ -8,10 +8,16 @@ const QuoteBox = ({data, callback}) => {
   return (
     <>
       <div id="quote-box">
-        <h1 id="text">
-          &quot;{data?.text}&quot;
-        </h1>
-        <h4 id="author">&mdash;&nbsp;{data?.author}</h4>
+        <div className="quoteWrapper">
+          <span className='quoteMark'>&quot;</span>
+          <div className="quoteContainer">
+            <h1 id="text">
+              {data?.text}
+            </h1>
+           { (data?.author) ? <h4 id="author">&mdash;&nbsp;{data?.author}</h4> : ''}
+          </div>
+          <span className='quoteMark'>&quot;</span>
+        </div>
         <div className="buttonRow">
           <TweetButton data={data}/>
           <Button id="new-quote" onClick={callback} text="New Quote"/>
