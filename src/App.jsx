@@ -47,7 +47,7 @@ const App = () => {
   return (
     <>
     {console.log('app state: index, lenght, loaded ', dataIndex, dataLength, loaded)}
-    {(loaded && (dataLength > 0)) && <QuoteBox data={quoteData[dataIndex]} callback={handleNewQuoteClick}/>}
+    {loaded && <QuoteBox data={quoteData[dataIndex]} callback={handleNewQuoteClick}/>}
     </>
   );
 };
