@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
-import TweetButton from './TweetButton';
-import Button from './Button';
+import imgURL from '../assets/Logo_of_Twitter.svg';
 
 const QuoteBox = ({data, callback, bgColor}) => {
   console.log('QuoteBox', data);
@@ -19,11 +18,14 @@ const QuoteBox = ({data, callback, bgColor}) => {
           <span className='quoteMark'>&quot;</span>
         </div>
         <div className="buttonRow">
-          <TweetButton data={data}/>
-          <Button id="new-quote" onClick={callback} text="New Quote"/>
+          <a className="twitter-share-button" id="tweet-quote" href={`https://twitter.com/intent/tweet?text=${data?.text}%20-%20${data?.author}&hashtags=FreeCodeCamp,randomQuoteMachine&url=`} target="_blank" rel="noreferrer" title="Tweet this!">
+            <img src={imgURL} alt="Twitter logo" />
+          </a>
+          <button id="new-quote" type="button" onClick={callback}>
+            New Quote
+          </button>
+        </div>
       </div>
-      </div>
-
     </>
   )
 };
