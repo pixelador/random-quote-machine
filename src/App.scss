@@ -1,0 +1,116 @@
+$font-stack: 'Libre Baskerville', serif;
+$primary-color: #1d9bf0;
+
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: $font-stack;
+}
+
+#quote-box {
+    padding: 3em 5em 3em 5em;
+    border-radius: 36px 0;
+    position: relative;
+    overflow: hidden;
+    max-width: 960px;
+    min-height: 20em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &::after,
+    &::before {
+      background-image: url(assets/quote-mark.svg);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: 0 0;
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 214px;
+      opacity: 0.12;
+      z-index: 0;
+    }
+
+    &::before {
+      transform: rotate(180deg);
+      top: -30px;
+      left: -40px;
+    }
+
+    &::after {
+      bottom: -30px;
+      right: -40px;
+    }
+
+    .quoteWrapper {
+      display: flex;
+      flex-direction: row;
+      color: #fff;
+      position: relative;
+      z-index: 10;
+    
+      .quoteMark {
+        font-size: 5rem;
+        font-style: italic;
+        display: none;
+      }
+
+      .quoteContainer {
+        #text {
+          text-align: left;
+          line-height: 1.25;
+          text-shadow:  2px 2px #00000024
+        }
+
+        #author {
+          text-align: right;
+          font-style: italic;
+          font-size: 1.75em;
+          text-shadow:  2px 2px #00000024
+        }
+      }
+    }
+    
+    .buttonRow {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 10px;
+
+      .twitter-share-button {
+        width: 50px;
+        height: 27px;
+        padding: 6px;
+        background: #fff;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: solid 1px transparent;
+      
+        &:hover {
+          border-color: $primary-color;
+        }
+      
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      #new-quote {
+        color: #1d9bf0;
+      
+        &:hover {
+          border-color: $primary-color;
+        }
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+}

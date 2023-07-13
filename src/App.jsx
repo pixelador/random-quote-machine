@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import QuoteBox from './components/QuoteBox';
-import './App.css'
+import './App.scss'
 
 const URL = "https://type.fit/api/quotes"
 
