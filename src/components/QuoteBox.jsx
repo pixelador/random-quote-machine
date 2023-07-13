@@ -18,7 +18,7 @@ const QuoteBox = ({data, callback, bgColor}) => {
           <span className='quoteMark'>&quot;</span>
         </div>
         <div className="buttonRow">
-          <a className="twitter-share-button" id="tweet-quote" href={`https://twitter.com/intent/tweet?text=${data?.text}%20-%20${data?.author}&hashtags=FreeCodeCamp,randomQuoteMachine&url=`} target="_blank" rel="noreferrer" title="Tweet this!">
+          <a className="twitter-share-button" id="tweet-quote" href={`https://twitter.com/intent/tweet?text=${data?.text}%20-%20${data?.author}&hashtags=freeCodeCamp,randomQuoteMachine&url=`} target="_blank" rel="noreferrer" title="Tweet this!">
             <img src={imgURL} alt="Twitter logo" />
           </a>
           <button id="new-quote" type="button" onClick={callback}>
