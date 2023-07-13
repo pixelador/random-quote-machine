@@ -1,17 +1,21 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: 'Libre Baskerville', serif;
 }
 
 #quote-box {
     padding: 3em 5em 3em 5em;
     border-radius: 36px 0;
-    background-color: lightcoral;
     position: relative;
     overflow: hidden;
+    max-width: 960px;
+    min-height: 20em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 #quote-box::before,
@@ -39,11 +43,6 @@
   right: -40px;
 }
 
-#author {
-  text-align: right;
-  font-style: italic;
-  font-size: 1.75em;
-}
 .quoteWrapper {
   display: flex;
   flex-direction: row;
@@ -61,6 +60,14 @@
 .quoteContainer #text {
   text-align: left;
   line-height: 1.25;
+  text-shadow:  2px 2px #00000024
+}
+
+.quoteContainer #author {
+  text-align: right;
+  font-style: italic;
+  font-size: 1.75em;
+  text-shadow:  2px 2px #00000024
 }
 
 .buttonRow {
@@ -102,4 +109,7 @@
 }
 #new-quote:hover {
   border-color: #1d9bf0;
+}
+#new-quote:focus {
+  outline: none;
 }

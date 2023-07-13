@@ -2,12 +2,12 @@ import PropTypes from 'prop-types';
 import TweetButton from './TweetButton';
 import Button from './Button';
 
-const QuoteBox = ({data, callback}) => {
+const QuoteBox = ({data, callback, bgColor}) => {
   console.log('QuoteBox', data);
   
   return (
     <>
-      <div id="quote-box">
+      <div id="quote-box" style={{backgroundColor:`${bgColor}`}}>
         <div className="quoteWrapper">
           <span className='quoteMark'>&quot;</span>
           <div className="quoteContainer">
@@ -31,6 +31,7 @@ const QuoteBox = ({data, callback}) => {
 QuoteBox.propTypes = {
   data: PropTypes.object,
   callback: PropTypes.func,
+  bgColor: PropTypes.string,
 }
 
 export default QuoteBox

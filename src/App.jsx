@@ -12,6 +12,18 @@ const App = () => {
   const [loaded, setLoaded] = useState(false);
   
   const getRandomIndex = (length) => Math.floor(Math.random() * length);
+
+  const bgColors = [
+    'lightcoral',
+    'lightblue',
+    'lightgreen',
+    'lightpink',
+    'lightsalmon',
+    'lightseagreen',
+    'lightskyblue',
+    'lightslategray',
+    'lightsteelblue',
+  ];
   
   const handleNewQuoteClick = () => {
     // Updating dataIndex will trigger a re-render of QuoteBox
@@ -47,7 +59,7 @@ const App = () => {
   return (
     <>
     {console.log('app state: index, lenght, loaded ', dataIndex, dataLength, loaded)}
-    {loaded && <QuoteBox data={quoteData[dataIndex]} callback={handleNewQuoteClick}/>}
+    {loaded && <QuoteBox data={quoteData[dataIndex]} callback={handleNewQuoteClick} bgColor={bgColors[getRandomIndex(bgColors.length)]} />}
     </>
   );
 };
