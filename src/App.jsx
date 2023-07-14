@@ -16,8 +16,6 @@ const App = () => {
   const bgColors = [
     'lightcoral',
     'lightblue',
-    'lightgreen',
-    'lightpink',
     'lightsalmon',
     'lightseagreen',
     'lightskyblue',
